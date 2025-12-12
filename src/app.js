@@ -142,23 +142,29 @@ function renderMembers(root) {
         <h2 style="margin-top: 48px; text-align: left;">Current</h2>
         <div class="grid" style="grid-template-columns: repeat(3, minmax(320px, 400px)); gap: 24px; margin-top: 24px; justify-content: center;">
           <div class="card people-card" style="grid-column: 2;">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/IMG_3842.jpg" alt="Sudeshna Roy">
+            </div>
             <div>
               <h3>Sudeshna Roy</h3>
-              <p class="role">Chief Executive</p>
+              <p class="role">Principal Investigator</p>
             </div>
           </div>
         </div>
         <div style="display: flex; justify-content: center; gap: 24px; margin-top: 24px;">
           <div class="card people-card" style="width: 400px; max-width: 400px;">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/IMG_3827.jpg" alt="Mohammed Khalifa">
+            </div>
             <div>
               <h3>Mohammed Khalifa</h3>
               <p class="role">Post Doctoral Scientist</p>
             </div>
           </div>
           <div class="card people-card" style="width: 400px; max-width: 400px;">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai">
+            </div>
             <div>
               <h3>Nirajan Bhattarai</h3>
               <p class="role">Post Doctoral Researcher</p>
@@ -167,7 +173,9 @@ function renderMembers(root) {
         </div>
         <div class="grid" style="grid-template-columns: repeat(4, minmax(280px, 400px)); gap: 24px; margin-top: 24px; justify-content: center;">
           <div class="card people-card">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/IMG_3832.jpg" alt="Ahmed Elsawi">
+            </div>
             <div>
               <h3>Ahmed Elsawi</h3>
               <p class="role">2nd Year PhD student</p>
@@ -181,14 +189,18 @@ function renderMembers(root) {
             </div>
           </div>
           <div class="card people-card">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/IMG_3822.jpg" alt="Destinee Manning">
+            </div>
             <div>
               <h3>Destinee Manning</h3>
               <p class="role">3rd year PhD student</p>
             </div>
           </div>
           <div class="card people-card">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/IMG_3836.jpg" alt="Tzu-Yu Huang">
+            </div>
             <div>
               <h3>Tzu-Yu Huang</h3>
               <p class="role">3rd year PhD student</p>
@@ -204,7 +216,9 @@ function renderMembers(root) {
             </div>
           </div>
           <div class="card people-card">
-            <div class="avatar"></div>
+            <div class="avatar">
+              <img src="assets/images/IMG_3838.jpg" alt="DaJ'ai Ashford">
+            </div>
             <div>
               <h3>DaJ'ai Ashford</h3>
               <p class="role">2nd year PhD Student</p>
@@ -219,10 +233,6 @@ function renderMembers(root) {
           </div>
           <div class="card people-card">
             <div class="avatar"></div>
-            <div>
-              <h3>David Park</h3>
-              <p class="role">Research Assistant</p>
-            </div>
           </div>
         </div>
 
