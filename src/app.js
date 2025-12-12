@@ -746,15 +746,25 @@ function renderSudeshnaRoy() {
 function renderNews() {
   mount(`
   <section class="section">
-    <div class="container">
+    <div class="container" style="max-width: 900px;">
       <h2>News</h2>
       <p class="sub">Lab announcements and media coverage.</p>
-      <div class="grid">
+      <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 32px;">
         ${newsItems().map(n => `
-          <article class="card">
-            <h3>${n.title}</h3>
-            <p class="sub">${n.date}</p>
-            <p>${n.summary}</p>
+          <article class="card" style="padding: 0; overflow: hidden;">
+            ${n.video ? `
+              <div style="width: 100%; height: 400px; background: #000;">
+                <iframe src="${n.video}" style="width: 100%; height: 100%; border: none;" frameborder="0" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+              </div>
+            ` : n.image ? `
+              <img src="${n.image}" alt="${n.title}" style="width: 100%; height: 300px; object-fit: cover;">
+            ` : ''}
+            <div style="padding: 24px;">
+              <h3 style="margin-top: 0;">${n.title}</h3>
+              <p class="sub">${n.date}</p>
+              <p>${n.summary}</p>
+              ${n.link ? `<a href="${n.link}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-weight: 600; margin-top: 12px; display: inline-block;">Read More →</a>` : ''}
+            </div>
           </article>
         `).join('')}
       </div>
@@ -894,10 +904,34 @@ function publications() {
 
 function newsItems() {
   return [
-    { title: 'New Grant Awarded', date: 'Nov 2025', summary: 'The lab received a multi-year grant to study tissue regeneration using computational methods.' },
-    { title: 'Paper Accepted', date: 'Sep 2025', summary: 'Our latest manuscript on hybrid modeling has been accepted in a leading journal.' },
-    { title: 'Conference Keynote', date: 'Jul 2025', summary: 'Dr. Roy delivered a keynote at the International Bioengineering Conference.' },
-    { title: 'Collaboration Announcement', date: 'Apr 2025', summary: 'We are partnering with clinical researchers to translate our findings.' },
+    { 
+      title: 'Molecular Architects of Roy Laboratory Join UT Health Science Center', 
+      date: 'January 15, 2025', 
+      summary: 'Dr. Roy and her team bring innovative medicinal chemistry research to UTHSC, including two major NIH grants totaling $4.9 million to combat tuberculosis and advance drug discovery.',
+      link: 'https://news.uthsc.edu/molecular-architects-of-roy-laboratory-join-ut-health-science-center-college-of-pharmacy/',
+      image: 'assets/images/roy-lab-news.jpg'
+    },
+    { 
+      title: '"We Are Essentially Molecular Architects"', 
+      date: 'UTHSC Pharmacy Feature', 
+      summary: 'Dr. Sudeshna Roy discusses joining the UT Health Science Center College of Pharmacy and her lab\'s innovative approach to drug discovery and molecular design.',
+      link: 'https://www.facebook.com/UTHSCPharmacy/videos/921681606607598/',
+      video: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FUTHSCPharmacy%2Fvideos%2F921681606607598%2F&show_text=false&width=560&t=0'
+    },
+    { 
+      title: 'Dr. Roy Featured on WMC-TV "Bluff City Life"', 
+      date: 'November 2024', 
+      summary: 'Dr. Roy discusses her research lab\'s pioneering work as a "molecular architect", breaking new ground to improve outcomes for diseases like tuberculosis.',
+      link: 'https://www.instagram.com/reel/DIMfPACPekK/',
+      video: 'https://www.instagram.com/reel/DIMfPACPekK/embed'
+    },
+    { 
+      title: 'Innovator Spotlight: Sudeshna Roy', 
+      date: 'UTRF Feature', 
+      summary: 'Dr. Roy featured in University of Tennessee Research Foundation Innovator Spotlight for pioneering work in medicinal chemistry and entrepreneurial approach to drug discovery.',
+      link: 'https://utrf.tennessee.edu/innovator_spotlight_sudeshna_roy/',
+      image: 'assets/images/IMG_3815.jpg'
+    }
   ];
 }
 
