@@ -8,21 +8,14 @@ This guide will help you navigate, update, and maintain the website, whether you
 
 ## Table of Contents
 
-1. [Quick Start](#quick-start) - Get the website running
-2. [For Non-Technical Users](#for-non-technical-users) - Simple update guide
-3. [For Developers](#for-developers) - Technical documentation  
-4. [Project Structure](#project-structure) - Where everything lives
-5. [Common Tasks](#common-tasks) - How to update content
-6. [Publishing](#publishing) - Deploy to the web
-7. [Troubleshooting](#troubleshooting) - Fix common issues
+<details>
+<summary><strong>Quick Start</strong> - Get the website running</summary>
 
----
-
-## Quick Start
+### Quick Start
 
 Want to see the website on your computer? Here are three simple ways to get started:
 
-### Method 1: VS Code Live Server (Recommended for Beginners)
+**Method 1: VS Code Live Server (Recommended for Beginners)**
 
 This is the easiest way to preview the site:
 
@@ -31,7 +24,7 @@ This is the easiest way to preview the site:
 3. Right-click on `public/index.html` and select "Open with Live Server"
 4. Your browser will automatically open with the website running locally
 
-### Method 2: Using Python (For Mac/Linux Users)
+**Method 2: Using Python (For Mac/Linux Users)**
 
 If you have Python installed, open your terminal and run:
 
@@ -42,7 +35,7 @@ python3 -m http.server 8000
 
 Then open your browser and go to: http://localhost:8000
 
-### Method 3: Using Node.js
+**Method 3: Using Node.js**
 
 If you prefer Node.js, run this in your terminal:
 
@@ -52,13 +45,16 @@ npx http-server public -p 8000
 
 Then visit: http://localhost:8000 in your browser
 
----
+</details>
 
-## For Lab Members & Content Editors
+<details>
+<summary><strong>For Lab Members & Content Editors</strong> - Simple update guide</summary>
+
+### For Lab Members & Content Editors
 
 Don't worry if you're not a programmer! This section is written for you. Updating the website is simpler than you think.
 
-### What You Can Update
+**What You Can Update**
 
 You can easily update these parts of the website:
 
@@ -68,7 +64,7 @@ You can easily update these parts of the website:
 - **Photos** - Add images from lab events and activities
 - **Dr. Roy's CV** - Keep the resume up to date
 
-### Before You Start
+**Before You Start**
 
 Here's what you'll need:
 
@@ -80,13 +76,14 @@ Don't be intimidated by the code - we'll walk you through exactly what to change
 
 ---
 
-### How to Add News
+**How to Add News**
 
 Let's say the lab just won an award or published a paper. Here's how to share that news:
 
 1. **Open the file**: Navigate to and open `src/app.js` in your text editor
 2. **Find the news section**: Press Ctrl+F (Windows) or Cmd+F (Mac) and search for `function newsItems()`
 3. **Add your news at the top of the list**: Copy and paste this template:
+
 ```javascript
 {
   title: 'Your News Title',           // The headline
@@ -96,6 +93,7 @@ Let's say the lab just won an award or published a paper. Here's how to share th
   image: 'assets/images/photo.jpg'    // Photo filename
 },
 ```
+
 4. **Save your changes**: Press Ctrl+S (Windows) or Cmd+S (Mac)
 5. **Preview your work**: Refresh your browser to see the new news item appear!
 
@@ -108,13 +106,14 @@ Let's say the lab just won an award or published a paper. Here's how to share th
 
 ---
 
-### How to Add Publications
+**How to Add Publications**
 
 Got a new paper published? Congratulations! Here's how to add it to the website:
 
 1. **Open the file**: Open `src/app.js` in your text editor
 2. **Locate the publications**: Use the search function (Ctrl+F or Cmd+F) and look for `<div class="pub-item">`
 3. **Use this template for your new publication**:
+
 ```html
 <div class="pub-item">
   <div>
@@ -126,6 +125,7 @@ Got a new paper published? Congratulations! Here's how to add it to the website:
   </div>
 </div>
 ```
+
 4. **Add it to the top**: Paste your new publication at the very top of the publications list
 5. **Fill in the details**: Replace the placeholder text with your paper's title, authors, journal name, and DOI link
 6. **Renumber the list**: Update all the other publication numbers (each one goes up by 1)
@@ -133,7 +133,7 @@ Got a new paper published? Congratulations! Here's how to add it to the website:
 
 ---
 
-### How to Add Team Members
+**How to Add Team Members**
 
 Welcoming someone new to the lab? Here's how to add them to the website:
 
@@ -145,6 +145,7 @@ Welcoming someone new to the lab? Here's how to add them to the website:
    - `undergrads:` for Undergraduate students
    - `alumni:` for Former lab members
 4. **Add their information** using this format:
+
 ```javascript
 {
   name: 'First Last',                    // Full name
@@ -152,12 +153,13 @@ Welcoming someone new to the lab? Here's how to add them to the website:
   photo: '/assets/images/name.jpg'       // Photo file
 },
 ```
+
 5. **Remember the comma**: Always end with a comma `,` after the closing brace
 6. **Save your work**: Press Ctrl+S or Cmd+S, then refresh to see the new team member!
 
 ---
 
-### How to Add Photos
+**How to Add Photos**
 
 Photos make the website come alive! Here's how to add them properly:
 
@@ -176,7 +178,7 @@ Photos make the website come alive! Here's how to add them properly:
 
 ---
 
-### Update Dr. Roy's CV
+**Update Dr. Roy's CV**
 
 Need to update Dr. Roy's CV? There are two ways to do this:
 
@@ -193,13 +195,16 @@ Need to update Dr. Roy's CV? There are two ways to do this:
 3. Replace it with your new filename everywhere it appears
 4. Save the file and you're done!
 
----
+</details>
 
-## For Developers
+<details>
+<summary><strong>For Developers</strong> - Technical documentation</summary>
+
+### For Developers
 
 This section is for developers who want to understand or modify the website's architecture.
 
-### Technology Stack
+**Technology Stack**
 
 We've kept things simple and maintainable:
 
@@ -210,7 +215,7 @@ We've kept things simple and maintainable:
 - **Hosting**: Static site, compatible with GitHub Pages and Netlify
 - **Build Process**: None required! Just edit and refresh
 
-### Key Features
+**Key Features**
 
 - **Mobile-first responsive design** - looks great on all devices
 - **Minimal dependencies** - only Swiper.js for the slideshow
@@ -218,9 +223,12 @@ We've kept things simple and maintainable:
 - **Modular architecture** - we're gradually breaking the monolith into smaller, manageable pieces
 - **Fast performance** - optimized for quick load times
 
----
+</details>
 
-## Project Structure
+<details>
+<summary><strong>Project Structure</strong> - Where everything lives</summary>
+
+### Project Structure
 
 ```
 Roy-Laboratory-Website/
@@ -255,7 +263,7 @@ Roy-Laboratory-Website/
 └── refactor.sh                      ← Helper script for refactoring
 ```
 
-### Important Files
+**Important Files**
 
 | File | Purpose |
 |------|---------|
@@ -264,15 +272,19 @@ Roy-Laboratory-Website/
 | `src/styles.css` | All styling (456 lines) |
 | `public/assets/images/` | Photo storage |
 
----
+</details>
 
-## Common Tasks
+<details>
+<summary><strong>Common Tasks</strong> - How to update content</summary>
 
-### Adding a New Page
+### Common Tasks
+
+**Adding a New Page**
 
 Want to add a new section to the website? Here's how:
 
 1. **Create a render function** in `src/app.js`:
+
 ```javascript
 function renderYourPage() {
   mount(`
@@ -287,6 +299,7 @@ function renderYourPage() {
 ```
 
 2. **Add a route** in the `router()` function so visitors can navigate to it:
+
 ```javascript
 case 'your-page':
   renderYourPage();
@@ -294,13 +307,14 @@ case 'your-page':
 ```
 
 3. **Add a menu link** in `public/index.html` so people can find your new page:
+
 ```html
 <a href="#your-page">Your Page</a>
 ```
 
 ---
 
-### Updating Styles
+**Updating Styles**
 
 Want to change colors or fonts? All the visual styling lives in `src/styles.css`:
 
@@ -318,13 +332,16 @@ Want to change colors or fonts? All the visual styling lives in `src/styles.css`
 **Want different fonts?** Look for the `font-family` property in the `body` selector  
 **Adjusting layouts?** Find the component you want to change (we've added helpful comments throughout the file)
 
----
+</details>
 
-## Publishing to the Web
+<details>
+<summary><strong>Publishing</strong> - Deploy to the web</summary>
+
+### Publishing to the Web
 
 Ready to make your changes live? Here are two free hosting options:
 
-### Option 1: GitHub Pages (Recommended)
+**Option 1: GitHub Pages (Recommended)**
 
 GitHub Pages is completely free and automatically deploys your site:
 
@@ -339,7 +356,7 @@ The best part? Every time you push changes to GitHub, the site automatically upd
 
 ---
 
-### Option 2: Netlify (Great Alternative)
+**Option 2: Netlify (Great Alternative)**
 
 Netlify is another excellent free option with some nice extra features:
 
@@ -355,7 +372,7 @@ Like GitHub Pages, Netlify automatically redeploys your site whenever you push c
 
 ---
 
-### How to Publish Your Changes
+**How to Publish Your Changes**
 
 Once you've made updates on your computer, here's how to make them live on the website:
 
@@ -378,23 +395,26 @@ git push origin main                          # Upload to GitHub
 
 Either way, your changes will appear on the live website in just a few minutes!
 
----
+</details>
 
-## Troubleshooting
+<details>
+<summary><strong>Troubleshooting</strong> - Fix common issues</summary>
+
+### Troubleshooting
 
 Don't panic! Here are solutions to common problems:
 
-### "Help! I Think I Broke Something!"
+**"Help! I Think I Broke Something!"**
 
 Take a deep breath - this is fixable. Here's what to do:
 
-**If you made a backup:**
+*If you made a backup:*
 1. Find the `.backup` file you created
 2. Copy everything from it
 3. Paste it back into the original file
 4. Save and you're back to normal!
 
-**If you didn't make a backup but use Git:**
+*If you didn't make a backup but use Git:*
 ```bash
 git checkout -- filename    # This undoes changes to a specific file
 git reset --hard           # This undoes EVERYTHING (be careful with this one!)
@@ -402,7 +422,7 @@ git reset --hard           # This undoes EVERYTHING (be careful with this one!)
 
 ---
 
-### "I Made Changes But They're Not Showing Up!"
+**"I Made Changes But They're Not Showing Up!"**
 
 This happens to everyone. Try these steps in order:
 
@@ -414,18 +434,18 @@ This happens to everyone. Try these steps in order:
 
 ---
 
-### "The Website Looks Broken!"
+**"The Website Looks Broken!"**
 
 Usually it's a small syntax error. Here are the most common mistakes and how to fix them:
 
-**Forgetting a comma:**
+*Forgetting a comma:*
 ```javascript
 {
   title: 'News 1'
   date: 'Today'    // ERROR: Missing comma after previous line
 }
 ```
-**Correct:**
+*Correct:*
 ```javascript
 {
   title: 'News 1',    // Comma here!
@@ -433,16 +453,16 @@ Usually it's a small syntax error. Here are the most common mistakes and how to 
 }
 ```
 
-**Mismatched quotes:**
+*Mismatched quotes:*
 ```javascript
 title: 'My Title"    // ERROR: Started with ' but ended with "
 ```
-**Correct:**
+*Correct:*
 ```javascript
 title: 'My Title'    // Both single quotes
 ```
 
-**Missing a bracket:**
+*Missing a bracket:*
 ```javascript
 newsItems() {
   return [
@@ -450,7 +470,7 @@ newsItems() {
   // ERROR: Missing closing ]
 }
 ```
-**Correct:**
+*Correct:*
 ```javascript
 newsItems() {
   return [
@@ -461,7 +481,7 @@ newsItems() {
 
 ---
 
-### "My Photos Aren't Showing Up!"
+**"My Photos Aren't Showing Up!"**
 
 Let's troubleshoot your images. Check these things:
 
@@ -473,7 +493,7 @@ Let's troubleshoot your images. Check these things:
 
 ---
 
-## Pre-Publishing Checklist
+**Pre-Publishing Checklist**
 
 Before you push your changes live, run through this quick checklist:
 
@@ -485,11 +505,13 @@ Before you push your changes live, run through this quick checklist:
 - Do all the links work when you click them?
 - Have you checked how it looks on a mobile browser?
 
+</details>
+
 ---
 
 ## Quick Reference
 
-### File Locations
+**File Locations**
 
 | What | Where |
 |------|-------|
@@ -500,7 +522,7 @@ Before you push your changes live, run through this quick checklist:
 | Update CV | `public/assets/Roy-CV-updated-Oct2025/` |
 | Change colors | `src/styles.css` → `:root` variables |
 
-### Keyboard Shortcuts
+**Keyboard Shortcuts**
 
 | Action | Windows | Mac |
 |--------|---------|-----|
@@ -509,7 +531,7 @@ Before you push your changes live, run through this quick checklist:
 | Refresh page | F5 | Cmd+R |
 | Hard refresh | Ctrl+Shift+R | Cmd+Shift+R |
 
-### Git Commands
+**Git Commands**
 
 ```bash
 git status                 # See what changed
@@ -545,5 +567,3 @@ We're here to help!
 **Maintained with care by the Roy Laboratory team**
 
 Last updated: December 17, 2025
-
-
