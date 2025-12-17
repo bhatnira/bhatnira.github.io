@@ -1,303 +1,549 @@
-# Roy Laboratory Website 🧪
+# Roy Laboratory Website
 
-Welcome! This is the official website for the **Roy Laboratory** at the University of Tennessee Health Science Center (UTHSC) College of Pharmacy.
+Welcome! This is the official website for the Roy Laboratory at UTHSC College of Pharmacy, led by Dr. Sudeshna Roy, Ph.D. Our team is dedicated to developing innovative medicines to fight drug-resistant infections, supported by $4.9M in NIH funding.
 
-**Led by**: Dr. Sudeshna Roy, Ph.D.  
-**Research Focus**: Developing new medicines to fight drug-resistant infections  
-**Funding**: $4.9 million in NIH grants for tuberculosis research
+This guide will help you navigate, update, and maintain the website, whether you're a lab member adding news or a developer working on the code.
 
 ---
 
-## � Documentation Guide
+## Table of Contents
 
-**Choose your guide based on your experience level:**
-
-- 🟢 **New to websites?** → Read **[SIMPLE_GUIDE.md](SIMPLE_GUIDE.md)** (Step-by-step with screenshots)
-- 🟡 **Need a quick reminder?** → Check **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** (One-page cheat sheet)
-- 🔵 **Developer?** → See **[DOCUMENTATION.md](DOCUMENTATION.md)** (Technical details)
-- 🟣 **Refactoring code?** → Read **[REFACTORING_GUIDE.md](REFACTORING_GUIDE.md)** (Modular architecture)
-
----
-
-## �📋 What's on the Website?
-
-Our website includes:
-
-- **🏠 Home** - Overview of our lab and what we do
-- **🔬 Research** - Information about our current projects
-- **👥 Members** - Meet our team: professors, students, and researchers
-- **📚 Publications** - Our published research papers (28 and counting!)
-- **👤 Sudeshna Roy** - About Dr. Roy, her CV, and contact information
-- **📰 News** - Latest announcements and media features
-- **🤝 Join Us** - Opportunities to work with us
+1. [Quick Start](#quick-start) - Get the website running
+2. [For Non-Technical Users](#for-non-technical-users) - Simple update guide
+3. [For Developers](#for-developers) - Technical documentation  
+4. [Project Structure](#project-structure) - Where everything lives
+5. [Common Tasks](#common-tasks) - How to update content
+6. [Publishing](#publishing) - Deploy to the web
+7. [Troubleshooting](#troubleshooting) - Fix common issues
 
 ---
 
-## 🎯 For Website Administrators
+## Quick Start
 
-### Quick Start: View the Website Locally
+Want to see the website on your computer? Here are three simple ways to get started:
 
-**Option 1: Using VS Code (Easiest)**
-1. Open this folder in Visual Studio Code
-2. Install the "Live Server" extension (if you haven't already)
-3. Right-click on `public/index.html`
-4. Select "Open with Live Server"
-5. Your browser will open automatically!
+### Method 1: VS Code Live Server (Recommended for Beginners)
 
-**Option 2: Using Python (If you have Python installed)**
+This is the easiest way to preview the site:
+
+1. Open this project folder in Visual Studio Code
+2. Install the "Live Server" extension (it's free!)
+3. Right-click on `public/index.html` and select "Open with Live Server"
+4. Your browser will automatically open with the website running locally
+
+### Method 2: Using Python (For Mac/Linux Users)
+
+If you have Python installed, open your terminal and run:
+
 ```bash
 cd public
 python3 -m http.server 8000
 ```
+
 Then open your browser and go to: http://localhost:8000
 
-**Option 3: Using Node.js**
+### Method 3: Using Node.js
+
+If you prefer Node.js, run this in your terminal:
+
 ```bash
 npx http-server public -p 8000
 ```
-Then visit: http://localhost:8000
+
+Then visit: http://localhost:8000 in your browser
 
 ---
 
-## ✏️ How to Update Content (Non-Technical Guide)
+## For Lab Members & Content Editors
 
-### 📰 Adding News Articles
+Don't worry if you're not a programmer! This section is written for you. Updating the website is simpler than you think.
 
-1. Open the file: `src/app.js`
-2. Find the section that says `function newsItems()`
-3. Add your new article at the top of the list:
+### What You Can Update
 
+You can easily update these parts of the website:
+
+- **News and Announcements** - Share lab news, awards, and media coverage
+- **Publications** - Add new research papers as they're published
+- **Team Members** - Welcome new members or update existing profiles
+- **Photos** - Add images from lab events and activities
+- **Dr. Roy's CV** - Keep the resume up to date
+
+### Before You Start
+
+Here's what you'll need:
+
+- A text editor (we recommend [Visual Studio Code](https://code.visualstudio.com/) - it's free and beginner-friendly!)
+- About 10-15 minutes of your time
+- **Important:** Always make a backup before editing! Just copy the file and add `.backup` to the filename
+
+Don't be intimidated by the code - we'll walk you through exactly what to change.
+
+---
+
+### How to Add News
+
+Let's say the lab just won an award or published a paper. Here's how to share that news:
+
+1. **Open the file**: Navigate to and open `src/app.js` in your text editor
+2. **Find the news section**: Press Ctrl+F (Windows) or Cmd+F (Mac) and search for `function newsItems()`
+3. **Add your news at the top of the list**: Copy and paste this template:
 ```javascript
 {
-  title: 'Your News Title Here',
-  date: 'Month Day, Year',
-  summary: 'A brief description of the news...',
-  link: 'https://link-to-full-article.com',
-  image: 'assets/images/your-photo.jpg'  // Optional
-}
+  title: 'Your News Title',           // The headline
+  date: 'December 14, 2025',          // Publication date
+  summary: 'Brief description...',     // 1-2 sentences
+  link: 'https://article-url.com',    // Full article link
+  image: 'assets/images/photo.jpg'    // Photo filename
+},
 ```
+4. **Save your changes**: Press Ctrl+S (Windows) or Cmd+S (Mac)
+5. **Preview your work**: Refresh your browser to see the new news item appear!
 
-4. Save the file
-5. Refresh your browser to see the changes!
+**Helpful Tips:**
 
-### 📚 Adding Publications
+- Always keep the single quotes `' '` around your text
+- Don't forget the comma `,` at the end of each item
+- If you're adding a video instead of an image, use `video:` instead of `image:`
+- Try to keep your summary brief - around 200 characters or less works best
 
-1. Open the file: `src/app.js`
-2. Find where publications are listed (look for the numbered papers)
-3. Add your new publication at the top:
+---
 
+### How to Add Publications
+
+Got a new paper published? Congratulations! Here's how to add it to the website:
+
+1. **Open the file**: Open `src/app.js` in your text editor
+2. **Locate the publications**: Use the search function (Ctrl+F or Cmd+F) and look for `<div class="pub-item">`
+3. **Use this template for your new publication**:
 ```html
 <div class="pub-item">
   <div>
     <h3><strong>1.</strong> Your Paper Title</h3>
-    <p class="meta">Authors - Journal Name (Year)</p>
+    <p class="meta">Authors - Journal Name (2025)</p>
   </div>
   <div class="links">
     <a href="https://doi.org/..." target="_blank">DOI</a>
   </div>
 </div>
 ```
-
-4. Update the numbers of existing publications
-5. Save and refresh!
-
-### 👥 Adding Team Members
-
-1. Open: `src/app.js`
-2. Find `function teamData()`
-3. Add to the appropriate section (postdocs, grads, undergrads):
-
-```javascript
-{
-  name: 'Member Name',
-  role: 'Their Position',
-  photo: '/assets/images/member-photo.jpg'
-}
-```
-
-4. Save the file and refresh!
-
-### 🖼️ Adding Photos
-
-1. Put your photo in: `public/assets/images/`
-2. Use the filename in your code (see examples above)
-3. **Tip**: Keep photo files under 500KB for fast loading!
+4. **Add it to the top**: Paste your new publication at the very top of the publications list
+5. **Fill in the details**: Replace the placeholder text with your paper's title, authors, journal name, and DOI link
+6. **Renumber the list**: Update all the other publication numbers (each one goes up by 1)
+7. **Save and preview**: Save the file and refresh your browser to see your new publication listed!
 
 ---
 
-## 🚀 For Developers
+### How to Add Team Members
 
-### What Technology We Use
+Welcoming someone new to the lab? Here's how to add them to the website:
 
-- **Language**: JavaScript (no frameworks needed!)
-- **Styling**: CSS (custom styles, no Bootstrap)
-- **Photos**: Swiper.js for the slideshow
-- **Hosting**: Can be hosted anywhere (GitHub Pages, Netlify, etc.)
-- **No Installation Required**: Just open the HTML file!
+1. **Open the team file**: Open `src/app.js` in your text editor
+2. **Find the team section**: Search for `function teamData()`
+3. **Pick the right category** for your new team member:
+   - `postdocs:` for Postdoctoral researchers
+   - `grads:` for Graduate students
+   - `undergrads:` for Undergraduate students
+   - `alumni:` for Former lab members
+4. **Add their information** using this format:
+```javascript
+{
+  name: 'First Last',                    // Full name
+  role: 'PhD Student',                   // Their position
+  photo: '/assets/images/name.jpg'       // Photo file
+},
+```
+5. **Remember the comma**: Always end with a comma `,` after the closing brace
+6. **Save your work**: Press Ctrl+S or Cmd+S, then refresh to see the new team member!
 
-### 📁 Where Everything Lives
+---
 
-Here's what each folder contains:
+### How to Add Photos
+
+Photos make the website come alive! Here's how to add them properly:
+
+1. **Place your photo**: Put the image file in the `public/assets/images/` folder
+2. **Name it clearly**: Use lowercase letters, no spaces, and hyphens between words (like `lab-party-december-2025.jpg`)
+3. **Optimize the size**: Keep photos under 500KB - use [tinyjpg.com](https://tinyjpg.com) to compress them if needed
+4. **Reference it in your code**: When you need to use the photo, the path is `assets/images/your-photo-name.jpg`
+
+**Photo Best Practices:**
+
+- JPG format works best for photos
+- Aim for under 500KB to keep the site fast
+- Use descriptive names like `team-meeting-jan-2025.jpg`
+- Avoid spaces in filenames - they cause problems!
+- Large files slow down the website, so compress before uploading
+
+---
+
+### Update Dr. Roy's CV
+
+Need to update Dr. Roy's CV? There are two ways to do this:
+
+**The Simple Way (No code changes needed):**
+
+1. Navigate to the folder: `public/assets/Roy-CV-updated-Oct2025/`
+2. Replace the existing PDF with the new CV file
+3. Important: Keep the exact same filename - `Sudeshna Roy CV_Oct 2025.pdf`
+
+**If you want to use a different filename:**
+
+1. Open `src/app.js` in your text editor
+2. Search for the current filename: `Sudeshna Roy CV_Oct 2025.pdf`
+3. Replace it with your new filename everywhere it appears
+4. Save the file and you're done!
+
+---
+
+## For Developers
+
+This section is for developers who want to understand or modify the website's architecture.
+
+### Technology Stack
+
+We've kept things simple and maintainable:
+
+- **Frontend**: Vanilla JavaScript (ES6+) - no frameworks needed
+- **Styling**: CSS with CSS custom properties (variables)
+- **Routing**: Hash-based client-side routing
+- **Slideshow**: Swiper.js v9 (loaded from CDN)
+- **Hosting**: Static site, compatible with GitHub Pages and Netlify
+- **Build Process**: None required! Just edit and refresh
+
+### Key Features
+
+- **Mobile-first responsive design** - looks great on all devices
+- **Minimal dependencies** - only Swiper.js for the slideshow
+- **Simple routing** - hash-based navigation without page reloads
+- **Modular architecture** - we're gradually breaking the monolith into smaller, manageable pieces
+- **Fast performance** - optimized for quick load times
+
+---
+
+## Project Structure
 
 ```
-📦 Roy-Laboratory-Website/
-├── 📂 public/                  ← The actual website
-│   ├── 📄 index.html          ← Main page structure
-│   └── 📂 assets/
-│       ├── 🖼️ images/         ← All photos go here
-│       └── 📄 CV PDF          ← Dr. Roy's CV
+Roy-Laboratory-Website/
+├── public/                          ← The actual website
+│   ├── index.html                   ← Main structure & navigation
+│   └── assets/
+│       ├── images/                  ← All photos (add new ones here)
+│       └── Roy-CV-*.pdf             ← Dr. Roy's CV
 │
-├── 📂 src/                     ← Code that makes it work
-│   ├── 📄 app.js              ← Main logic (news, publications, etc.)
-│   └── 📄 styles.css          ← How it looks (colors, fonts, layout)
+├── src/                             ← Website code
+│   ├── app.js                       ← Main logic (pages, data, routing)
+│   ├── styles.css                   ← Styling (colors, layout, fonts)
+│   │
+│   ├── js/ (modular - in progress)
+│   │   ├── main.js                  ← New modular entry point
+│   │   ├── router.js                ← Routing logic
+│   │   ├── utils.js                 ← Helper functions
+│   │   ├── pages/                   ← Individual page modules
+│   │   └── data/                    ← Data modules (news, pubs, team)
+│   │
+│   └── css/ (modular - in progress)
+│       ├── base.css                 ← Variables, reset
+│       ├── components.css           ← Buttons, cards
+│       ├── header.css               ← Navigation
+│       └── pages/                   ← Page-specific styles
 │
-├── 📂 Heat-Shots/              ← Backup photos (not shown on site)
-├── 📂 Pictures/                ← More backup photos
+├── Heat-Shots/                      ← Backup photos (not on website)
+├── Pictures/                        ← More backup photos
 │
-└── 📄 README.md               ← You are here! 👋
+├── README.md                        ← This file (you are here!)
+├── .gitignore                       ← Files to ignore in Git
+└── refactor.sh                      ← Helper script for refactoring
 ```
 
-### 🔧 Technical Setup
+### Important Files
 
-**If you need to download the website code:**
+| File | Purpose |
+|------|---------|
+| `public/index.html` | Page structure, navigation menu |
+| `src/app.js` | All pages, data, routing (1037 lines) |
+| `src/styles.css` | All styling (456 lines) |
+| `public/assets/images/` | Photo storage |
+
+---
+
+## Common Tasks
+
+### Adding a New Page
+
+Want to add a new section to the website? Here's how:
+
+1. **Create a render function** in `src/app.js`:
+```javascript
+function renderYourPage() {
+  mount(`
+    <section class="section">
+      <div class="container">
+        <h2>Your Page Title</h2>
+        <p>Your content here</p>
+      </div>
+    </section>
+  `);
+}
+```
+
+2. **Add a route** in the `router()` function so visitors can navigate to it:
+```javascript
+case 'your-page':
+  renderYourPage();
+  break;
+```
+
+3. **Add a menu link** in `public/index.html` so people can find your new page:
+```html
+<a href="#your-page">Your Page</a>
+```
+
+---
+
+### Updating Styles
+
+Want to change colors or fonts? All the visual styling lives in `src/styles.css`:
+
+```css
+/* CSS Variables - Change these for site-wide color changes */
+:root {
+  --primary: #0ea5e9;    /* Main blue color */
+  --text: #0f172a;       /* Text color */
+  --muted: #475569;      /* Lighter text */
+  --border: rgba(2,6,23,0.08);  /* Border color */
+}
+```
+
+**Changing colors?** Just edit those variables at the top  
+**Want different fonts?** Look for the `font-family` property in the `body` selector  
+**Adjusting layouts?** Find the component you want to change (we've added helpful comments throughout the file)
+
+---
+
+## Publishing to the Web
+
+Ready to make your changes live? Here are two free hosting options:
+
+### Option 1: GitHub Pages (Recommended)
+
+GitHub Pages is completely free and automatically deploys your site:
+
+1. Visit your repository: https://github.com/bhatnira/Roy-Laboratory-Website
+2. Click on **Settings** (top menu), then **Pages** (left sidebar)
+3. Under "Source", select the `main` branch
+4. Under "Folder", choose `/public`
+5. Click **Save** and wait 2-3 minutes for deployment
+6. Your site will be live at: `https://bhatnira.github.io/Roy-Laboratory-Website/`
+
+The best part? Every time you push changes to GitHub, the site automatically updates within a few minutes!
+
+---
+
+### Option 2: Netlify (Great Alternative)
+
+Netlify is another excellent free option with some nice extra features:
+
+1. Visit [netlify.com](https://netlify.com) and create a free account
+2. Click the "New site from Git" button
+3. Connect your GitHub account when prompted
+4. Select the Roy Laboratory repository
+5. Set the "Publish directory" to: `public`
+6. Click "Deploy site" and wait a minute or two
+7. Netlify will give you a free URL (which you can customize if you like!)
+
+Like GitHub Pages, Netlify automatically redeploys your site whenever you push changes to GitHub.
+
+---
+
+### How to Publish Your Changes
+
+Once you've made updates on your computer, here's how to make them live on the website:
+
+**Using GitHub Desktop (Easier for Beginners):**
+
+1. Open the GitHub Desktop app
+2. You'll see all your changes listed on the left
+3. Write a brief commit message describing what you changed (like "Added December news" or "Updated publications")
+4. Click the "Commit to main" button
+5. Click "Push origin" at the top to upload your changes
+6. Wait a couple minutes and your changes will be live!
+
+**Using the Command Line (For Terminal Fans):**
 
 ```bash
-# Download from GitHub
-git clone https://github.com/bhatnira/Roy-Laboratory-Website.git
-cd Roy-Laboratory-Website
+git add -A                                    # Stage all your changes
+git commit -m "Brief description of changes"  # Save them with a message
+git push origin main                          # Upload to GitHub
 ```
 
-**That's it!** No installation needed. Just open the files and edit.
+Either way, your changes will appear on the live website in just a few minutes!
 
-## Development
+---
 
-### File Organization
+## Troubleshooting
 
-- **public/index.html**: Contains the navigation structure and base HTML
-- **src/app.js**: All page rendering functions and routing logic
-- **src/styles.css**: Global styles and component styling
-- **public/assets/**: All static assets (images, PDFs, etc.)
+Don't panic! Here are solutions to common problems:
 
-### Adding New Pages
+### "Help! I Think I Broke Something!"
 
-1. Create a render function in `src/app.js`:
-   ```javascript
-   function renderYourPage() {
-     mount(`
-       <section class="section">
-         <div class="container">
-           <h2>Your Page Title</h2>
-           <!-- Your content -->
-         </div>
-       </section>
-     `);
-   }
-   ```
+Take a deep breath - this is fixable. Here's what to do:
 
-2. Add a route in the `router()` function:
-   ```javascript
-   case 'your-page':
-     renderYourPage();
-     break;
-   ```
+**If you made a backup:**
+1. Find the `.backup` file you created
+2. Copy everything from it
+3. Paste it back into the original file
+4. Save and you're back to normal!
 
-3. Add a navigation link in `public/index.html`:
-   ```html
-   <a href="#your-page">Your Page</a>
-   ```
+**If you didn't make a backup but use Git:**
+```bash
+git checkout -- filename    # This undoes changes to a specific file
+git reset --hard           # This undoes EVERYTHING (be careful with this one!)
+```
 
-### Styling Guidelines
+---
 
-- Use CSS variables defined in `:root` for consistent theming
-- Follow the existing card-based layout patterns
-- Maintain responsive design principles
-- Keep max-width: 900px for content sections
+### "I Made Changes But They're Not Showing Up!"
 
-## Deployment
+This happens to everyone. Try these steps in order:
 
-### GitHub Pages
+1. **Did you save?** - Press Ctrl+S (Windows) or Cmd+S (Mac) to make sure the file is saved
+2. **Refresh your browser** - Press F5 or click the refresh button
+3. **Do a hard refresh** - Press Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac) to bypass the cache
+4. **Clear your browser cache** - Go to browser settings and clear browsing data
+5. **Check the console** - Press F12 to open developer tools, then check the Console tab for any error messages
 
-1. Go to repository Settings → Pages
-2. Select branch: `main`
-3. Select folder: `/public`
-4. Save and wait for deployment
-5. Site will be available at: `https://bhatnira.github.io/Roy-Laboratory-Website/`
+---
 
-### Netlify
+### "The Website Looks Broken!"
 
-1. Connect your GitHub repository to Netlify
-2. Set build settings:
-   - Build command: (leave empty)
-   - Publish directory: `public`
-3. Deploy
+Usually it's a small syntax error. Here are the most common mistakes and how to fix them:
 
-### Custom Domain
-
-Update the base URL in your deployment settings and ensure all asset paths are relative (already configured).
-
-## Content Updates
-
-### Updating Publications
-
-Edit the `publicationsData()` function in `src/app.js`:
+**Forgetting a comma:**
 ```javascript
-{ 
-  authors: "Nirajan Bhattarai", 
-  title: "Paper title", 
-  journal: "Journal name", 
-  year: 2025, 
-  link: "DOI or URL" 
+{
+  title: 'News 1'
+  date: 'Today'    // ERROR: Missing comma after previous line
+}
+```
+**Correct:**
+```javascript
+{
+  title: 'News 1',    // Comma here!
+  date: 'Today'
 }
 ```
 
-### Adding News Items
-
-Edit the `newsItems()` function in `src/app.js`:
+**Mismatched quotes:**
 ```javascript
-{ 
-  title: 'News Title', 
-  date: 'Date', 
-  summary: 'Brief description',
-  link: 'External URL',
-  image: 'assets/images/your-image.jpg',  // Optional
-  video: 'https://video-embed-url'        // Optional
+title: 'My Title"    // ERROR: Started with ' but ended with "
+```
+**Correct:**
+```javascript
+title: 'My Title'    // Both single quotes
+```
+
+**Missing a bracket:**
+```javascript
+newsItems() {
+  return [
+    { title: 'News' }
+  // ERROR: Missing closing ]
+}
+```
+**Correct:**
+```javascript
+newsItems() {
+  return [
+    { title: 'News' }
+  ]    // Closing bracket
 }
 ```
 
-### Updating Team Members
+---
 
-Edit the `teamData()` function in `src/app.js` for each category:
-- `pi`: Principal Investigator
-- `postdocs`: Postdoctoral researchers
-- `grads`: Graduate students
-- `undergrads`: Undergraduate researchers
-- `alumni`: Former members
-- `collaborators`: External collaborators
+### "My Photos Aren't Showing Up!"
 
-## Browser Support
+Let's troubleshoot your images. Check these things:
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- Is the photo actually in the `public/assets/images/` folder?
+- Does the filename in your code match the actual file exactly? (Capitalization matters!)
+- Is your path correct? It should be `assets/images/filename.jpg` (don't include `/public/`)
+- Is the file size reasonable? Keep it under 500KB
+- Does the filename have spaces? Replace spaces with hyphens: `my-photo.jpg` not `my photo.jpg`
 
-## Contributing
+---
 
-This is a private lab website. For updates or corrections, please contact the lab directly.
+## Pre-Publishing Checklist
 
-## Contact
+Before you push your changes live, run through this quick checklist:
 
-**Dr. Sudeshna Roy, Ph.D.**  
-Associate Professor  
+- Have you saved all your files? (Ctrl+S / Cmd+S)
+- Did you test the website locally? Does everything look right?
+- Are there any red squiggly lines in your code editor? (These indicate errors)
+- Did you proofread for typos?
+- Are all your images optimized? (Under 500KB each)
+- Do all the links work when you click them?
+- Have you checked how it looks on a mobile browser?
+
+---
+
+## Quick Reference
+
+### File Locations
+
+| What | Where |
+|------|-------|
+| Add news | `src/app.js` → `function newsItems()` |
+| Add publication | `src/app.js` → find `<div class="pub-item">` |
+| Add team member | `src/app.js` → `function teamData()` |
+| Add photos | `public/assets/images/` folder |
+| Update CV | `public/assets/Roy-CV-updated-Oct2025/` |
+| Change colors | `src/styles.css` → `:root` variables |
+
+### Keyboard Shortcuts
+
+| Action | Windows | Mac |
+|--------|---------|-----|
+| Save file | Ctrl+S | Cmd+S |
+| Find in file | Ctrl+F | Cmd+F |
+| Refresh page | F5 | Cmd+R |
+| Hard refresh | Ctrl+Shift+R | Cmd+Shift+R |
+
+### Git Commands
+
+```bash
+git status                 # See what changed
+git add -A                 # Stage all changes
+git commit -m "Message"    # Save with description
+git push origin main       # Upload to GitHub
+```
+
+---
+
+## Need Help?
+
+If you run into issues or have questions about the website, feel free to reach out:
+
+**Roy Laboratory**  
 College of Pharmacy  
 Department of Pharmaceutical Sciences  
-University of Tennessee Health Science Center  
+881 Madison Avenue, Pharmacy Building 05_571  
+Memphis, TN 38163
 
-Email: roy@uthsc.edu  
-Address: 881 Madison Avenue, Pharmacy Building_05_571, Memphis, TN 38163
+Email: roy@uthsc.edu
+
+We're here to help!
+
+---
 
 ## License
 
 © 2025 Roy Laboratory, UTHSC. All rights reserved.
+
+---
+
+**Maintained with care by the Roy Laboratory team**
+
+Last updated: December 17, 2025
 
 
