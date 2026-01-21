@@ -7,10 +7,67 @@
  * - Navigation/routing between pages
  * 
  * To update content, search for the section you need:
- * - Blog Posts: Search for "function newsItems()" or "BLOG DATA"
+ * - Blog Posts: Search for "BLOG DATA" below
+ * - Projects: Search for "PROJECTS DATA" below
+ * - Materials: Search for "MATERIALS DATA" below
  * - Publications: Search for "renderPublications"
  * - About/Profile: Search for "renderImpact"
  */
+
+// ============================================
+// DATA STORAGE - Edit these to update your content!
+// ============================================
+
+// BLOG DATA - Add your blog posts here
+// To add a new blog post, copy the template and add it to the top of the array
+const BLOG_POSTS = [
+  // Template - Copy and modify this:
+  // {
+  //   title: 'Your Blog Post Title',
+  //   date: 'January 21, 2026',
+  //   summary: 'A brief 1-2 sentence description of your blog post...',
+  //   link: 'https://medium.com/@yourname/post-url',  // Link to full post (optional)
+  //   image: 'assets/images/blog-post.jpg',  // Featured image (optional)
+  //   tags: ['AI', 'Drug Discovery', 'QSAR']  // Tags for categorization (optional)
+  // },
+  
+  // Add your blog posts below:
+];
+
+// PROJECTS DATA - Add your research projects here
+const PROJECTS = [
+  // Template - Copy and modify this:
+  // {
+  //   title: 'Project Name',
+  //   description: 'Detailed description of the project, methods used, and outcomes...',
+  //   technologies: ['Python', 'TensorFlow', 'RDKit'],  // Tools/technologies used
+  //   status: 'Completed',  // 'Completed', 'In Progress', 'Published'
+  //   date: 'January 2026',
+  //   image: 'assets/images/project-image.jpg',  // Project image (optional)
+  //   github: 'https://github.com/yourusername/project',  // GitHub link (optional)
+  //   paper: 'https://doi.org/...',  // Publication link (optional)
+  //   demo: 'https://yourproject.com'  // Live demo link (optional)
+  // },
+  
+  // Add your projects below:
+];
+
+// MATERIALS DATA - Add teaching materials, slides, datasets, etc.
+const MATERIALS = [
+  // Template - Copy and modify this:
+  // {
+  //   title: 'Material Title',
+  //   type: 'Slides',  // 'Slides', 'Dataset', 'Tutorial', 'Code', 'Documentation'
+  //   description: 'Brief description of what this material covers...',
+  //   date: 'January 2026',
+  //   link: 'https://drive.google.com/...',  // Download/view link
+  //   size: '5.2 MB',  // File size (optional)
+  //   format: 'PDF',  // File format (optional)
+  //   tags: ['QSAR', 'Tutorial', 'Python']  // Tags (optional)
+  // },
+  
+  // Add your materials below:
+];
 
 // ============================================
 // SETUP & INITIALIZATION
@@ -403,14 +460,13 @@ function renderSudeshnaRoy() {
 }
 
 function renderNews() {
-  const blogPosts = newsItems();
   mount(`
   <section class="section">
     <div class="container" style="max-width: 900px;">
       <h2>Blog</h2>
       <p class="sub">Thoughts, insights, and updates on AI-driven drug discovery, computational methods, and research.</p>
       <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 32px;">
-        ${blogPosts.length > 0 ? blogPosts.map(post => `
+        ${BLOG_POSTS.length > 0 ? BLOG_POSTS.map(post => `
           <article class="card" style="padding: 0; overflow: hidden;">
             ${post.image ? `
               <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 300px; object-fit: cover;">
@@ -418,7 +474,12 @@ function renderNews() {
             <div style="padding: 24px;">
               <h3 style="margin-top: 0;">${post.title}</h3>
               <p class="sub">${post.date}</p>
-              <p>${post.summary}</p>
+              ${post.tags ? `
+                <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+                  ${post.tags.map(tag => `<span style="background: #e9ecef; padding: 4px 12px; border-radius: 12px; font-size: 12px; color: #495057;">${tag}</span>`).join('')}
+                </div>
+              ` : ''}
+              <p style="margin-top: 16px;">${post.summary}</p>
               ${post.link ? `<a href="${post.link}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-weight: 600; margin-top: 12px; display: inline-block;">Read More →</a>` : ''}
             </div>
           </article>
@@ -487,213 +548,147 @@ function renderContact() {
   });
 }
 
-function renderImpact() {
+// ============================================
+// PROJECTS PAGE
+// ============================================
+function renderProjects() {
   mount(`
-  <section class="section impact-page">
+  <section class="section">
     <div class="container">
-      <h2>About Me</h2>
-      <div class="grid impact-grid">
-        <div>
-          <div class="card impact-copy">
-            <p>I am currently a Postdoctoral Researcher at the Roy Laboratory in the Pharmaceutical Sciences Department at UT Health Science Center, specializing in AI-driven drug discovery and computational pharmaceutical sciences.</p>
-            <p>My research leverages artificial intelligence and machine learning to accelerate the drug discovery pipeline. I develop and apply Quantitative Structure-Activity Relationship (QSAR) models to predict molecular properties and biological activities, enabling rational design of novel therapeutic compounds. My work encompasses structure-based and ligand-based drug design approaches, integrating cheminformatics with advanced machine learning algorithms.</p>
-            <p>A key focus of my research is protein structure prediction and modeling, utilizing deep learning architectures to understand protein-ligand interactions and binding mechanisms. I employ generative models, including variational autoencoders (VAEs), generative adversarial networks (GANs), and transformer-based architectures, to design de novo molecular structures with optimized pharmacological profiles.</p>
-            <p>I am particularly interested in explainable AI (XAI) for drug discovery, developing interpretable machine learning models that provide mechanistic insights into molecular activity predictions. This approach bridges the gap between black-box predictions and actionable pharmaceutical knowledge, enabling researchers to understand the molecular features driving biological activity and make informed decisions in lead optimization.</p>
-            <p>My work aims to integrate computational predictions with experimental validation, contributing to more efficient and cost-effective drug development processes while advancing our understanding of structure-function relationships in medicinal chemistry.</p>
+      <h2>Projects</h2>
+      <p class="sub">Research projects and computational tools I've developed or contributed to.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; margin-top: 32px;">
+        ${PROJECTS.length > 0 ? PROJECTS.map(project => `
+          <article class="card" style="padding: 24px; display: flex; flex-direction: column; height: 100%;">
+            ${project.image ? `
+              <img src="${project.image}" alt="${project.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;">
+            ` : ''}
+            <div style="flex: 1;">
+              <h3 style="margin-top: 0;">${project.title}</h3>
+              <p style="font-size: 14px; color: #6c757d; margin-top: 4px;">
+                ${project.status} ${project.date ? `• ${project.date}` : ''}
+              </p>
+              ${project.technologies ? `
+                <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                  ${project.technologies.map(tech => `<span style="background: #e7f3ff; color: #0066cc; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">${tech}</span>`).join('')}
+                </div>
+              ` : ''}
+              <p style="margin-top: 16px; line-height: 1.6; color: #495057;">${project.description}</p>
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #e9ecef;">
+              ${project.github ? `<a href="${project.github}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">📁 Code</a>` : ''}
+              ${project.paper ? `<a href="${project.paper}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">📄 Paper</a>` : ''}
+              ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">🔗 Demo</a>` : ''}
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center; grid-column: 1 / -1;">
+            <h3 style="margin-top: 0; color: #666;">No projects yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for research projects and computational tools.</p>
           </div>
-        </div>
-        <div class="media impact-video">
-          <div class="video-wrap">
-            <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: auto; border-radius: 8px;" />
-          </div>
-        </div>
+        `}
       </div>
     </div>
   </section>
   `);
 }
 
-function renderResearchDetails(root) {
-  root.innerHTML = `
-    <section class="centered-page">
-      <div class="container">
-        <div class="card">
-          <h1>Research</h1>
-          <p>
-The Roy Laboratory is focused on developing new technologies at the interface of chemistry and biology. To this end, we explore and develop new methods to synthesize small molecules and apply them in various drug discovery and chemical biology programs. We are particularly interested in the following areas:
-          </p>
-        </div>
-        <div class="card">
-          <h2>Target-based discovery of chemotherapeutics against Mycobacterium tuberculosis and other antibiotic-resistant bacterial infections.</h2>
-          <p>
-Drug-resistant infections present a global health risk that needs urgent scientific interventions. In the United States alone, two million people become infected with antibiotic-resistant bacteria leading to 23,000 deaths each year. Unfortunately, our arsenal of new drugs is insufficient to combat the multi-drug resistant and extreme-drug resistant bacteria, commonly known as “superbugs”. To this end, we are working on developing new antibiotics or chemotherapeutic agents to combat this growing challenge of antibacterial resistance utilizing a structure-based drug design approach targeting MraY, a membrane-bound protein that plays a key role in peptidoglycan biosynthesis.
-          </p>
-        </div>
-        <div class="card">
-          <h2>Synthesis and library construction of chemical scaffolds for screening against therapeutic targets.</h2>
-          <p>
-We are also interested in developing technologies around fluorine-containing compounds as well discovering new chemical reactivity. Fluorinated molecules confer unique pharmacokinetic properties and binding interactions and contain 100% abundant 19F natural isotope. We are creating new technologies to synthesize new chemical entities, both fluorinated and non-fluorinated molecules, that could be used in various drug discovery platforms. We are developing a library comprising of fluorinated molecules that will be screened against new and existing targets using 19F NMR assay platform.
-          </p>
-        </div>
-      </div>
-    </section>
-  `;
-}
-
-// Data (Placeholder)
-function researchItems() {
-  return [
-    { title: 'Computational Models of Tissue Dynamics', summary: 'Developing hybrid models that combine mechanistic insights with machine learning.' },
-    { title: 'Bioinformatics Pipelines for Multi-Omics', summary: 'Designing scalable pipelines for integrative analysis across data modalities.' },
-    { title: 'Image-Based Phenotyping', summary: 'Using advanced imaging and computer vision to characterize biological structures.' },
-  ];
-}
-
-function people() {
-  return {
-    pi: [
-      { name: 'Dr. A. Roy', role: 'Principal Investigator', photo: '/assets/images/person1.jpg' },
-    ],
-    postdocs: [
-      { name: 'Postdoc 1', role: 'Post-Doctoral Researcher', photo: '/assets/images/person2.jpg' },
-    ],
-    grads: [
-      { name: 'Graduate Student 1', role: 'PhD Student', photo: '/assets/images/person3.jpg' },
-      { name: 'Graduate Student 2', role: 'PhD Student', photo: '/assets/images/person4.jpg' },
-    ],
-    undergrads: [
-      { name: 'Undergraduate 1', role: 'Undergraduate Researcher', photo: '/assets/images/person5.jpg' },
-    ],
-    alumni: [
-      { name: 'Alumnus 1', role: 'Former Graduate Student', photo: '/assets/images/person6.jpg' },
-    ],
-    collaborators: [
-      { name: 'Collaborator 1', role: 'External Collaborator', photo: '/assets/images/person7.jpg' },
-    ],
-  };
-}
-
-function publications() {
-  return [
-    { title: 'Hybrid Modeling for Biological Systems', authors: 'Doe, Roy, et al.', venue: 'Bioinformatics Journal', year: 2024, doi: 'https://doi.org/10.0000/example', pdf: '#' },
-    { title: 'Deep Learning in Bioengineering', authors: 'Roy, Smith', venue: 'Nature Methods', year: 2023, doi: '', pdf: '#' },
-    { title: 'Translational Pathways', authors: 'Roy et al.', venue: 'Science Advances', year: 2022, doi: '', pdf: '#' },
-  ];
-}
-
-function renderJoinUs() {
+// ============================================
+// MATERIALS PAGE
+// ============================================
+function renderMaterials() {
   mount(`
-    <section class="section">
-      <div class="container" style="max-width: 900px;">
-        <h2>Opportunities & Collaboration</h2>
-        
-        <div style="margin-top: 48px;">
-          <h3>Collaboration Opportunities</h3>
-          <p style="margin-top: 16px; line-height: 1.8;">
-            I am always interested in collaborating on exciting research projects in computational biology, bioinformatics, and related fields. If you have a project idea or would like to discuss potential collaborations, please reach out.
-          </p>
-        </div>
-
-        <div style="margin-top: 48px;">
-          <h3>Consulting & Advisory</h3>
-          <p style="margin-top: 16px; line-height: 1.8;">
-            I provide consulting services for computational biology projects, bioinformatics pipeline development, and machine learning applications in life sciences. I'm also available for advisory roles in research projects and startups.
-          </p>
-        </div>
-
-        <div style="margin-top: 48px;">
-          <h3>Speaking Engagements</h3>
-          <p style="margin-top: 16px; line-height: 1.8;">
-            I'm available for invited talks, seminars, and workshops on topics related to computational biology, bioinformatics, and AI in life sciences. If you'd like me to speak at your institution or event, please get in touch.
-          </p>
-        </div>
-
-        <div style="margin-top: 64px;">
-          <h3>Contact Me</h3>
-          <p style="margin-top: 16px; line-height: 1.8;">
-            Interested in any of the above? Please <a href="#contact" style="color: var(--primary); text-decoration: none; font-weight: 600;">contact me</a> to discuss further.
-          </p>
-        </div>
+  <section class="section">
+    <div class="container" style="max-width: 900px;">
+      <h2>Materials</h2>
+      <p class="sub">Teaching materials, presentations, datasets, and other resources.</p>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 32px;">
+        ${MATERIALS.length > 0 ? MATERIALS.map(material => `
+          <article class="card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; gap: 20px;">
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase;">${material.type}</span>
+                  ${material.format ? `<span style="color: #6c757d; font-size: 13px;">${material.format}</span>` : ''}
+                  ${material.size ? `<span style="color: #6c757d; font-size: 13px;">${material.size}</span>` : ''}
+                </div>
+                <h3 style="margin-top: 12px; margin-bottom: 8px;">${material.title}</h3>
+                <p style="color: #6c757d; font-size: 14px; margin-bottom: 12px;">${material.date}</p>
+                <p style="color: #495057; line-height: 1.6;">${material.description}</p>
+                ${material.tags ? `
+                  <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                    ${material.tags.map(tag => `<span style="background: #f8f9fa; color: #495057; padding: 3px 10px; border-radius: 10px; font-size: 11px;">${tag}</span>`).join('')}
+                  </div>
+                ` : ''}
+              </div>
+              ${material.link ? `
+                <a href="${material.link}" target="_blank" rel="noopener" class="button" style="white-space: nowrap;">Download</a>
+              ` : ''}
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center;">
+            <h3 style="margin-top: 0; color: #666;">No materials yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for teaching materials, slides, and datasets.</p>
+          </div>
+        `}
       </div>
-    </section>
+    </div>
+  </section>
   `);
-}
-
-// ============================================
-// BLOG DATA
-// ============================================
-// TO ADD BLOG POST: Copy the format below and add it at the top of this list
-// Format:
-// {
-//   title: 'Your Blog Post Title',     // Post headline
-//   date: 'Month Day, Year',           // Publication date
-//   summary: 'Brief description...',   // 1-2 sentences summary
-//   link: 'https://...',               // Link to full article (optional)
-//   image: 'assets/images/post.jpg'  // Featured image (optional)
-// },
-
-function newsItems() {
-  return [
-    // Add your blog posts here
-    // Example format:
-    // { 
-    //   title: 'Understanding QSAR Modeling in Drug Discovery', 
-    //   date: 'January 21, 2026', 
-    //   summary: 'An introduction to quantitative structure-activity relationships and how machine learning enhances predictive modeling in pharmaceutical sciences.',
-    //   link: 'https://your-blog-url.com/post',  // optional
-    //   image: 'assets/images/blog-post.jpg'  // optional
-    // },
-  ];
 }
 
 // ============================================
 // ROUTER - Navigation System
 // ============================================
-// This function decides which page to show based on the URL
-// Example: website.com/#news will show the news page
-
 function router() {
-  const root = document.getElementById('app'); // Main content area
-  const hash = (location.hash || '#home').replace('#', ''); // Get page name from URL
+  const root = document.getElementById('app');
+  const hash = (location.hash || '#home').replace('#', '');
   
-  // Match URL to the right page
+  // Update active nav item
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  const activeNav = document.getElementById(`nav-${hash}`);
+  if (activeNav) activeNav.classList.add('active');
+  
+  // Route to appropriate page
   switch (hash) {
-    case 'home':                // website.com/#home
+    case 'home':
       renderHome();
       break;
-    case 'research':            // website.com/#research
+    case 'research':
       renderResearch(root);
       break;
-    case 'members':             // website.com/#members
+    case 'members':
       renderMembers(root);
       break;
-    case 'people':              // website.com/#people
-      renderPeople();
-      break;
-    case 'publications':        // website.com/#publications
+    case 'publications':
       renderPublications();
       break;
-    case 'sudeshna-roy':        // website.com/#sudeshna-roy
-      renderSudeshnaRoy();
-      break;
-    case 'news':                // website.com/#news
+    case 'news':
       renderNews();
       break;
-    case 'join-us':             // website.com/#join-us
-      renderJoinUs();
-      break;
-    case 'contact':             // website.com/#contact
+    case 'contact':
       renderContact();
       break;
     case 'impact':
       renderImpact();
       break;
-    case 'research-details':
-      // Redirect to main research page for unified experience
-      renderResearch(root);
+    case 'projects':
+      renderProjects();
+      break;
+    case 'materials':
+      renderMaterials();
       break;
     default:
       renderHome();
-      break;
   }
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
 }
+
+// ============================================
+// MENU FUNCTIONS
+// ============================================
