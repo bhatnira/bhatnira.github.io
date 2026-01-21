@@ -69,6 +69,61 @@ const MATERIALS = [
   // Add your materials below:
 ];
 
+// TEACHING DATA - Add courses, workshops, tutorials
+const TEACHING = [
+  // Template:
+  // {
+  //   title: 'Course/Workshop Name',
+  //   role: 'Instructor',  // 'Instructor', 'Teaching Assistant', 'Guest Lecturer'
+  //   institution: 'University Name',
+  //   date: 'Fall 2025',
+  //   description: 'Course description and topics covered...',
+  //   link: 'https://...',  // Course website (optional)
+  //   materials: 'https://...'  // Link to course materials (optional)
+  // },
+];
+
+// CODE/REPOSITORIES DATA - Add GitHub repos, tools, packages
+const CODE = [
+  // Template:
+  // {
+  //   title: 'Repository/Tool Name',
+  //   description: 'What the code does...',
+  //   language: 'Python',  // Primary language
+  //   stars: 42,  // GitHub stars (optional)
+  //   github: 'https://github.com/username/repo',
+  //   demo: 'https://...',  // Live demo (optional)
+  //   tags: ['Machine Learning', 'Drug Discovery']
+  // },
+];
+
+// ANNOUNCEMENTS DATA - Add news, updates, achievements
+const ANNOUNCEMENTS = [
+  // Template:
+  // {
+  //   title: 'Announcement Title',
+  //   date: 'January 2026',
+  //   content: 'Details of the announcement...',
+  //   type: 'Award',  // 'Award', 'Publication', 'Talk', 'News'
+  //   link: 'https://...'  // Related link (optional)
+  // },
+];
+
+// MEDIA & TALKS DATA - Add presentations, interviews, media appearances
+const MEDIA_TALKS = [
+  // Template:
+  // {
+  //   title: 'Talk/Media Title',
+  //   event: 'Conference/Event Name',
+  //   date: 'January 2026',
+  //   type: 'Talk',  // 'Talk', 'Poster', 'Interview', 'Podcast', 'Video'
+  //   description: 'Brief description...',
+  //   slides: 'https://...',  // Link to slides (optional)
+  //   video: 'https://youtube.com/...',  // Video link (optional)
+  //   location: 'City, Country'  // Location (optional)
+  // },
+];
+
 // ============================================
 // SETUP & INITIALIZATION
 // ============================================
@@ -639,6 +694,197 @@ function renderMaterials() {
 }
 
 // ============================================
+// TEACHING PAGE
+// ============================================
+function renderTeaching() {
+  mount(`
+  <section class="section">
+    <div class="container" style="max-width: 900px;">
+      <h2>Teaching</h2>
+      <p class="sub">Courses, workshops, and educational activities.</p>
+      <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 32px;">
+        ${TEACHING.length > 0 ? TEACHING.map(course => `
+          <article class="card" style="padding: 24px;">
+            <div style="display: flex; justify-content: between; align-items: start; gap: 20px;">
+              <div style="flex: 1;">
+                <h3 style="margin-top: 0;">${course.title}</h3>
+                <p style="color: #6c757d; font-size: 14px; margin-top: 4px;">
+                  ${course.role} • ${course.institution} • ${course.date}
+                </p>
+                <p style="margin-top: 16px; line-height: 1.6; color: #495057;">${course.description}</p>
+                <div style="display: flex; gap: 12px; margin-top: 16px;">
+                  ${course.link ? `<a href="${course.link}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">🔗 Course Website</a>` : ''}
+                  ${course.materials ? `<a href="${course.materials}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">📁 Materials</a>` : ''}
+                </div>
+              </div>
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center;">
+            <h3 style="margin-top: 0; color: #666;">No teaching activities yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for courses and workshops.</p>
+          </div>
+        `}
+      </div>
+    </div>
+  </section>
+  `);
+}
+
+// ============================================
+// CODE PAGE
+// ============================================
+function renderCode() {
+  mount(`
+  <section class="section">
+    <div class="container">
+      <h2>Code & Repositories</h2>
+      <p class="sub">Open-source projects, tools, and packages I've developed.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; margin-top: 32px;">
+        ${CODE.length > 0 ? CODE.map(repo => `
+          <article class="card" style="padding: 24px;">
+            <h3 style="margin-top: 0;">${repo.title}</h3>
+            ${repo.language || repo.stars ? `
+              <div style="display: flex; gap: 12px; margin-top: 8px; align-items: center;">
+                ${repo.language ? `<span style="background: #e7f3ff; color: #0066cc; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;">${repo.language}</span>` : ''}
+                ${repo.stars ? `<span style="color: #6c757d; font-size: 13px;">⭐ ${repo.stars}</span>` : ''}
+              </div>
+            ` : ''}
+            <p style="margin-top: 16px; line-height: 1.6; color: #495057;">${repo.description}</p>
+            ${repo.tags ? `
+              <div style="display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap;">
+                ${repo.tags.map(tag => `<span style="background: #f8f9fa; color: #495057; padding: 3px 10px; border-radius: 10px; font-size: 11px;">${tag}</span>`).join('')}
+              </div>
+            ` : ''}
+            <div style="display: flex; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #e9ecef;">
+              ${repo.github ? `<a href="${repo.github}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">📁 GitHub</a>` : ''}
+              ${repo.demo ? `<a href="${repo.demo}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">🔗 Demo</a>` : ''}
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center; grid-column: 1 / -1;">
+            <h3 style="margin-top: 0; color: #666;">No code repositories yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for open-source projects and tools.</p>
+          </div>
+        `}
+      </div>
+    </div>
+  </section>
+  `);
+}
+
+// ============================================
+// ANNOUNCEMENTS PAGE
+// ============================================
+function renderAnnouncements() {
+  mount(`
+  <section class="section">
+    <div class="container" style="max-width: 900px;">
+      <h2>Announcements</h2>
+      <p class="sub">Recent news, awards, and updates.</p>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 32px;">
+        ${ANNOUNCEMENTS.length > 0 ? ANNOUNCEMENTS.map(announcement => `
+          <article class="card" style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: start; gap: 20px;">
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase;">${announcement.type}</span>
+                  <span style="color: #6c757d; font-size: 14px;">${announcement.date}</span>
+                </div>
+                <h3 style="margin: 8px 0;">${announcement.title}</h3>
+                <p style="color: #495057; line-height: 1.6; margin-top: 12px;">${announcement.content}</p>
+                ${announcement.link ? `
+                  <a href="${announcement.link}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600; margin-top: 12px; display: inline-block;">Learn More →</a>
+                ` : ''}
+              </div>
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center;">
+            <h3 style="margin-top: 0; color: #666;">No announcements yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for news and updates.</p>
+          </div>
+        `}
+      </div>
+    </div>
+  </section>
+  `);
+}
+
+// ============================================
+// MEDIA & TALKS PAGE
+// ============================================
+function renderMedia() {
+  mount(`
+  <section class="section">
+    <div class="container" style="max-width: 900px;">
+      <h2>Media & Talks</h2>
+      <p class="sub">Presentations, interviews, and media appearances.</p>
+      <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 32px;">
+        ${MEDIA_TALKS.length > 0 ? MEDIA_TALKS.map(item => `
+          <article class="card" style="padding: 24px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <span style="background: #6f42c1; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase;">${item.type}</span>
+              <span style="color: #6c757d; font-size: 14px;">${item.date}</span>
+            </div>
+            <h3 style="margin: 0 0 8px 0;">${item.title}</h3>
+            <p style="color: #6c757d; font-size: 14px; margin-bottom: 12px;">
+              ${item.event}${item.location ? ` • ${item.location}` : ''}
+            </p>
+            <p style="color: #495057; line-height: 1.6;">${item.description}</p>
+            <div style="display: flex; gap: 12px; margin-top: 16px;">
+              ${item.slides ? `<a href="${item.slides}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">📊 Slides</a>` : ''}
+              ${item.video ? `<a href="${item.video}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600;">🎥 Video</a>` : ''}
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center;">
+            <h3 style="margin-top: 0; color: #666;">No media or talks yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for presentations and media appearances.</p>
+          </div>
+        `}
+      </div>
+    </div>
+  </section>
+  `);
+}
+
+// ============================================
+// PERSONAL PAGE
+// ============================================
+function renderPersonal() {
+  mount(`
+  <section class="section">
+    <div class="container" style="max-width: 900px;">
+      <h2>Personal</h2>
+      <p class="sub">Hobbies, interests, and life beyond research.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 32px;">
+        ${PERSONAL.length > 0 ? PERSONAL.map(item => `
+          <article class="card" style="padding: 0; overflow: hidden;">
+            ${item.image ? `
+              <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 200px; object-fit: cover;">
+            ` : ''}
+            <div style="padding: 20px;">
+              <h3 style="margin-top: 0;">${item.title}</h3>
+              <p style="color: #495057; line-height: 1.6;">${item.description}</p>
+              ${item.link ? `
+                <a href="${item.link}" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none; font-size: 14px; font-weight: 600; margin-top: 12px; display: inline-block;">Learn More →</a>
+              ` : ''}
+            </div>
+          </article>
+        `).join('') : `
+          <div class="card" style="padding: 48px; text-align: center; grid-column: 1 / -1;">
+            <h3 style="margin-top: 0; color: #666;">No personal content yet</h3>
+            <p style="color: #999; margin-top: 12px;">Check back soon for hobbies and interests.</p>
+          </div>
+        `}
+      </div>
+    </div>
+  </section>
+  `);
+}
+
+// ============================================
 // ROUTER - Navigation System
 // ============================================
 function router() {
@@ -680,6 +926,21 @@ function router() {
       break;
     case 'materials':
       renderMaterials();
+      break;
+    case 'teaching':
+      renderTeaching();
+      break;
+    case 'code':
+      renderCode();
+      break;
+    case 'announcements':
+      renderAnnouncements();
+      break;
+    case 'media':
+      renderMedia();
+      break;
+    case 'personal':
+      renderPersonal();
       break;
     default:
       renderHome();
