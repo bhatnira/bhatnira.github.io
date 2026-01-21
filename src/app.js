@@ -66,7 +66,7 @@ function renderHome() {
       <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 20px; margin-top: 16px; align-items: start;">
         <div class="card" style="padding:20px; display:flex; flex-direction: column; align-items:center;">
           <div class="avatar" style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin-bottom: 16px;">
-            <img src="/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img src="/public/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
           <div style="text-align: center;">
             <address style="font-style: normal; color: var(--text)">
@@ -124,7 +124,7 @@ My research focuses on developing and applying artificial intelligence and machi
         </div>
         <!-- Image directly below the intro text -->
         <div class="card">
-          <img src="assets/images/Research-Summary_2018.webp?v=4" alt="Research Overview" style="width: 100%; height: auto; display: block;" />
+          <img src="/public/assets/images/Research-Summary_2018.webp?v=4" alt="Research Overview" style="width: 100%; height: auto; display: block;" />
         </div>
         <div class="card">
           <h2>AI-Driven Drug Discovery & QSAR Modeling</h2>
@@ -163,7 +163,7 @@ function renderMembers(root) {
         <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px;">
           <div class="card people-card">
             <div class="avatar">
-              <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai">
+              <img src="/public/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai">
             </div>
             <div>
               <h3>Nirajan Bhattarai</h3>
@@ -473,7 +473,7 @@ function renderImpact() {
         </div>
         <div class="media impact-video">
           <div class="video-wrap">
-            <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: auto; border-radius: 8px;" />
+            <img src="/public/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: auto; border-radius: 8px;" />
           </div>
         </div>
       </div>
