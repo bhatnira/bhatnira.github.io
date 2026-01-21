@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nirajan Bhattarai</title>
+  <meta name="description" content="Nirajan Bhattarai - Personal Website and Portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container" style="border-bottom: 1px solid var(--border);">
+      <nav style="display: flex; justify-content: flex-end; gap: 24px; padding: 12px 0; font-size: 14px;">
+        <a href="#news" style="color: var(--text); text-decoration: none;">Blog</a>
+        <a href="#publications" style="color: var(--text); text-decoration: none;">Publications</a>
+        <a href="#research" style="color: var(--text); text-decoration: none;">Projects</a>
+        <a href="#contact" style="color: var(--text); text-decoration: none;">Contact</a>
+      </nav>
+    </div>
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="brand-text">
+          <span class="brand-line">Nirajan Bhattarai</span>
+        </span>
+      </div>
+      <nav class="nav nav--broad">
+        <a class="nav-item" href="#home" data-panel="about">Home</a>
+        <a class="nav-item" href="#impact" data-panel="about">About</a>
+        <a class="nav-item" href="#research" id="nav-research">Projects</a>
+        <a class="nav-item" href="#publications" id="nav-publications">Publications</a>
+        <a class="nav-item" href="#news" id="nav-news">Blog</a>
+        <a class="nav-item" href="#contact" id="nav-contact">Contact</a>
+      </nav>
+      <button class="hamburger" aria-label="Open Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mega" id="mega">
+      <div class="container mega-inner">
+        <div class="mega-col" id="panel-about">
+          <div class="about-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div>
+              <h3><a href="#impact" class="mega-link">About Me</a></h3>
+              <p>Learn about my background, research interests, and academic journey.</p>
+            </div>
+            <div>
+              <h3><a href="#contact" class="mega-link">Get in Touch</a></h3>
+              <p>Connect with me for collaborations and opportunities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mega-col" id="panel-research">
+          <h3><a href="#research" class="mega-link">My Projects</a></h3>
+          <p>Explore my research projects and academic work.</p>
+        </div>
+        <div class="mega-col" id="panel-centers">
+          <h3>Publications</h3>
+          <p>View my published research papers and academic contributions.</p>
+        </div>
+        <div class="mega-col" id="panel-education">
+          <h3>Contact</h3>
+          <p>Reach out for collaborations, questions, or opportunities.</p>
+        </div>
+        <div class="mega-col" id="panel-news">
+          <h3>Nirajan Bhattarai</h3>
+          <p><strong>Research Professional & Academic</strong></p>
+          <p>Email: nbhatta1@uthsc.edu</p>
+          <br>
+          <p>Current research interests and academic pursuits.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="app"></main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Nirajan Bhattarai</strong>
+        <p>Research professional dedicated to advancing knowledge and contributing to academic excellence.</p>
+      </div>
+      <div class="footer-links">
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Nirajan Bhattarai. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="src/app.js" type="module"></script>
+</body>
+</html>

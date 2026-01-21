@@ -66,7 +66,7 @@ function renderHome() {
       <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 20px; margin-top: 16px; align-items: start;">
         <div class="card" style="padding:20px; display:flex; flex-direction: column; align-items:center;">
           <div class="avatar" style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin-bottom: 16px;">
-            <img src="/public/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
           <div style="text-align: center;">
             <address style="font-style: normal; color: var(--text)">
@@ -132,7 +132,7 @@ My research focuses on developing and applying artificial intelligence and machi
         </div>
         <!-- Image directly below the intro text -->
         <div class="card">
-          <img src="/public/assets/images/Research-Summary_2018.webp?v=4" alt="Research Overview" style="width: 100%; height: auto; display: block;" />
+          <img src="assets/images/Research-Summary_2018.webp?v=4" alt="Research Overview" style="width: 100%; height: auto; display: block;" />
         </div>
         <div class="card">
           <h2>AI-Driven Drug Discovery & QSAR Modeling</h2>
@@ -183,7 +183,7 @@ function renderMembers(root) {
         <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px;">
           <div class="card people-card">
             <div class="avatar">
-              <img src="/public/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai">
+              <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai">
             </div>
             <div>
               <h3>Nirajan Bhattarai</h3>
@@ -440,6 +440,11 @@ function renderContact() {
     <div class="container">
       <h2>Contact</h2>
       <p class="sub">Get in touch for collaborations, questions, or opportunities.</p>
+      <div class="card" style="padding: 20px; margin-bottom: 24px; background: #f8f9fa;">
+        <h3 style="margin-top: 0;">Contact Information</h3>
+        <p style="margin: 12px 0;"><strong>Email:</strong> <a href="mailto:nirajanbhattarai4@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">nirajanbhattarai4@gmail.com</a></p>
+        <p style="margin: 12px 0;"><strong>Institutional Email:</strong> <a href="mailto:nbhatta1@uthsc.edu" style="color: var(--primary); text-decoration: none; font-weight: 600;">nbhatta1@uthsc.edu</a></p>
+      </div>
       <form class="card" id="contact-form">
         <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 12px">
           <div>
@@ -467,7 +472,17 @@ function renderContact() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form));
-    alert(`Thanks, ${data.name}! I'll be in touch at ${data.email}.`);
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Website Contact from ${data.name}`);
+    const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+    const mailtoLink = `mailto:nirajanbhattarai4@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show confirmation
+    alert(`Thanks, ${data.name}! Your email client will open to send the message.`);
     form.reset();
   });
 }
@@ -489,7 +504,7 @@ function renderImpact() {
         </div>
         <div class="media impact-video">
           <div class="video-wrap">
-            <img src="/public/assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: auto; border-radius: 8px;" />
+            <img src="assets/images/Nirajan.jpg" alt="Nirajan Bhattarai" style="width: 100%; height: auto; border-radius: 8px;" />
           </div>
         </div>
       </div>
@@ -614,7 +629,7 @@ function renderJoinUs() {
 //   date: 'Month Day, Year',           // Publication date
 //   summary: 'Brief description...',   // 1-2 sentences summary
 //   link: 'https://...',               // Link to full article (optional)
-//   image: '/public/assets/images/post.jpg'  // Featured image (optional)
+//   image: 'assets/images/post.jpg'  // Featured image (optional)
 // },
 
 function newsItems() {
@@ -626,7 +641,7 @@ function newsItems() {
     //   date: 'January 21, 2026', 
     //   summary: 'An introduction to quantitative structure-activity relationships and how machine learning enhances predictive modeling in pharmaceutical sciences.',
     //   link: 'https://your-blog-url.com/post',  // optional
-    //   image: '/public/assets/images/blog-post.jpg'  // optional
+    //   image: 'assets/images/blog-post.jpg'  // optional
     // },
   ];
 }
