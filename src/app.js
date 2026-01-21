@@ -102,7 +102,15 @@ function renderHome() {
             </li>
             <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
               <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
-              Explainable AI (XAI) in Pharmaceutical Sciences
+              Explainable AI (XAI) in Drug Discovery
+            </li>
+            <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+              Low Data Drug Discovery
+            </li>
+            <li style="margin-bottom: 8px; padding-left: 20px; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--primary);">▸</span>
+              Explainable Computer Vision for Biomedical Imaging
             </li>
           </ul>
         </div>
@@ -145,9 +153,21 @@ I develop and apply generative AI models, including variational autoencoders (VA
           </p>
         </div>
         <div class="card">
-          <h2>Explainable AI (XAI) in Pharmaceutical Sciences</h2>
+          <h2>Explainable AI (XAI) in Drug Discovery</h2>
           <p>
 I focus on developing interpretable machine learning models that provide mechanistic insights into molecular activity predictions. Using techniques such as SHAP (SHapley Additive exPlanations), attention mechanisms, and feature importance analysis, I identify key molecular features and structural motifs responsible for biological activity. This explainability framework enables medicinal chemists to understand model predictions, validate computational findings against known structure-activity relationships, and make informed decisions in lead optimization campaigns, ultimately bridging the gap between AI predictions and actionable pharmaceutical knowledge.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Low Data Drug Discovery</h2>
+          <p>
+I develop innovative machine learning approaches to address the challenge of limited experimental data in drug discovery. By leveraging transfer learning, few-shot learning, and meta-learning techniques, I build predictive models that can generalize from small datasets. My work incorporates data augmentation strategies, domain adaptation methods, and integration of prior knowledge from related chemical spaces to improve model performance when training data is scarce. This approach is particularly valuable for understudied targets, rare diseases, and early-stage drug discovery projects where acquiring large-scale experimental data is cost-prohibitive or time-intensive.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Explainable Computer Vision for Biomedical Imaging</h2>
+          <p>
+I apply computer vision and deep learning techniques to analyze biomedical images for disease diagnosis and characterization, with a strong emphasis on model interpretability. Using convolutional neural networks (CNNs), vision transformers, and advanced architectures, I develop models for histopathology analysis, medical imaging interpretation, and cellular phenotyping. By integrating explainability methods such as Grad-CAM, attention visualization, and saliency maps, I ensure that diagnostic predictions are transparent and clinically interpretable. This work bridges the gap between automated image analysis and clinical decision-making, providing healthcare professionals with AI-powered tools that offer both accurate predictions and clear reasoning for their diagnostic outputs.
           </p>
         </div>
       </div>
